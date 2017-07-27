@@ -5,7 +5,6 @@
 * media.py
 * entertainment_center.py
 * fresh_tomatoes.py
-* README.md
 
 ## How To Run The Application
 
