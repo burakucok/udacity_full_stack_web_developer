@@ -1,6 +1,7 @@
 import fresh_tomatoes
 import media
 
+# this code first creates list of movies and then open web page with these movies
 movies = []
 #add movies
 movies.append(media.Movie("The Shawshank Redemption",
