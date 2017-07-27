@@ -2,9 +2,9 @@
   Website for watching movie trailers
 
 ## Content
-* media.py
 * entertainment_center.py
 * fresh_tomatoes.py
+* media.py
 
 ## How To Run The Application
 
