@@ -1,8 +1,17 @@
-## Movie Trailer Website
+# Movie Trailer Website
   Website for watching movie trailers
 
-### Usage
-  After executing following script, web page will be open.
-  
-  
+## Content
+* media.py
+* entertainment_center.py
+* fresh_tomatoes.py
+* README.md
 
+## How To Run The Application
+
+### Using the Terminal:
+* Type python entertainment_center.py
+
+### Using the Python IDLE: 
+* Select Run from the IDLE menu
+* Click Run Module from the dropdown list
