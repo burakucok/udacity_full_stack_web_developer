@@ -6,10 +6,10 @@ This reporting tool is a Python program using the psycopg2 module to connect to 
 * log_analysis.py
 * results.txt
 
-
 ## How To Run The Application
 * Install Vagrant and VirtualBox
 * Download or clone this repository
+* [Dowload Data](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip)
 * Open Terminal
 * Launch Vagrant
 ```
