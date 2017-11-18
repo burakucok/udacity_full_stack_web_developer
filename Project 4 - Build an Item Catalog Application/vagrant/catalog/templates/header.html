@@ -1,0 +1,18 @@
+<div class="row top-menu">
+    <div class="col-md-6 blue">
+        <a href = "{{url_for('showCategories')}}">
+            <h1>Catalog App</h1>
+        </a>
+    </div>
+    <div class="col-md-6 text-right">
+        {% if not session.user_id %}    
+        <li>
+            <a href="{{url_for('showLogin')}}">Login</a>
+        </li>
+        {% else %}
+        <li>
+            <a href="{{url_for('gdisconnect')}}">Logout</a>
+        </li>
+        {% endif %}
+    </div>
+</div>
