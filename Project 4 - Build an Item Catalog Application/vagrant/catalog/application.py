@@ -1,4 +1,11 @@
-from flask import Flask, render_template, request, redirect, jsonify, url_for, flash, make_response
+from flask import (Flask,
+                   render_template,
+                   request,
+                   redirect, 
+                   jsonify, 
+                   url_for, 
+                   flash, 
+                   make_response)
 from sqlalchemy import create_engine, asc
 from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Category, Item, User
@@ -225,7 +232,8 @@ def showItem(category_id, item_id):
     """
     item = session.query(Item).filter_by(id = item_id).one()
     category = session.query(Category).filter_by(id = category_id).one()
-    return render_template('item.html', item = item, category = category, isAuthenticatedUser = isAuthenticatedUser(item.user_id))
+    return render_template('item.html', item = item, category = category, 
+                           isAuthenticatedUser = isAuthenticatedUser(item.user_id))
 
 
 def isAuthenticatedUser(item_user_id):
@@ -251,7 +259,8 @@ def newItem(category_id):
 
     category = session.query(Category).filter_by(id = category_id).one()
     if request.method == 'POST':
-        newItem = Item(title = request.form['title'], description = request.form['description'], category = category, user_id = login_session['user_id'])
+        newItem = Item(title = request.form['title'], description = request.form['description'], 
+                       category = category, user_id = login_session['user_id'])
         session.add(newItem)
         session.commit()
         return showItems(category_id)
@@ -280,7 +289,8 @@ def editItem(category_id, item_id):
         session.commit() 
         return redirect(url_for('showItems', category_id = category_id))
     else:
-        return render_template('editItem.html', category_id = category_id, item_id = item_id, item = editedItem)
+        return render_template('editItem.html', category_id = category_id, 
+                               item_id = item_id, item = editedItem)
 
 
 @app.route('/category/<int:category_id>/item/<int:item_id>/delete', methods = ['GET','POST'])
