@@ -10,7 +10,7 @@
     <div class="col-md-1"></div>
     <div class="col-md-10">
         <h3>{{item.title}}</h3>
-        <textarea>{{item.description}}</textarea>
+        <p>{{item.description}}</p>
         {% if isAuthenticatedUser %}
         <a href='{{url_for('editItem', category_id = category.id, item_id = item.id ) }}'>Edit</a> | 
         <a href='{{url_for('deleteItem', category_id = category.id, item_id = item.id ) }}'>Delete</a>
