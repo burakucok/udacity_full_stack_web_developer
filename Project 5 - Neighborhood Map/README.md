@@ -1,5 +1,5 @@
-#Neighborhood Map
-Single page application featuring a map of neighborhood in Istanbul
+# Neighborhood Map
+Single page application featuring a map of neighborhood in Istanbul.
 
 ## Content
 * css/style.css
