@@ -229,13 +229,10 @@ function initMap() {
             id: locations[i].fs_id,
 			content: ""
         });
-		setMarkerContent(marker);
-        markers.push(marker);
-        marker.addListener('click', function() {
-            markerClicked(this);
-        });
+	setMarkerContent(marker);
+	addMarkerClickEvent(marker);
+        markers.push(marker);	    
         bounds.extend(markers[i].position);
-
     }
     map.fitBounds(bounds);
 
@@ -243,7 +240,12 @@ function initMap() {
         map.fitBounds(bounds);
     };
 
-
+    function addMarkerClickEvent(marker) {
+        marker.addListener('click', function() {
+            markerClicked(this);
+        });
+    }
+	
     function markerClicked(marker) {
         populateInfoWindow(marker, infowindow);
         makeHighlightedSelectedIcon(marker, highlightedIcon, defaultIcon);
