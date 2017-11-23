@@ -232,7 +232,7 @@ function initMap() {
 		setMarkerContent(marker);
         markers.push(marker);
         marker.addListener('click', function() {
-            markerClicked(this)
+            markerClicked(this);
         });
         bounds.extend(markers[i].position);
 
@@ -257,7 +257,7 @@ function initMap() {
     }
 	
     function makeHighlightedSelectedIcon(selectedIcon) {
-        makeAllIconDefault()
+        makeAllIconDefault();
         selectedIcon.setIcon(highlightedIcon);
     }
 
@@ -275,15 +275,14 @@ function initMap() {
 
 
     function populateInfoWindow(marker, infowindow) {
-        if (infowindow.marker != marker) {
-			console.log(marker.content)
+        if (infowindow.marker != marker) {			
             infowindow.marker = marker;
-			infowindow.setContent(marker.content);					
+	    infowindow.setContent(marker.content);					
             infowindow.open(map, marker);
 
             infowindow.addListener('closeclick', function() {
-				infowindow.close(infowindow);
-				makeAllIconDefault();
+		infowindow.close(infowindow);
+		makeAllIconDefault();
             });
         }
     }
@@ -300,9 +299,9 @@ function initMap() {
 		  success: function(data) {
 			  console.log(data.response);
 			if (data.response){						
-				var photoUrl = data.response.venue.bestPhoto["prefix"] + "height150" + data.response.venue.bestPhoto["suffix"];
+				var photoUrl = data.response.venue.bestPhoto.prefix + "height150" + data.response.venue.bestPhoto.suffix;
 				marker.content = "<h3>" + marker.title + "</h3><br>" +
-								'<a href="' + data.response.venue["shortUrl"] + '"target="_blank">' +  
+								'<a href="' + data.response.venue.shortUrl + '"target="_blank">' +  
 								"<div style='height:150'><img src=" + '"' +
 								photoUrl + '"></div></a>';								
 			}
@@ -337,8 +336,8 @@ function initMap() {
 		
         this.markerClicked = function(marker) {
             markerClicked(marker);
-        }
-    }
+        };
+    };
 
 
     ko.applyBindings(new viewModel());
