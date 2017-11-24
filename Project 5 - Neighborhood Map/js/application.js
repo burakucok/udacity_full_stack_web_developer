@@ -299,13 +299,15 @@ function initMap() {
 		  dataType: "json",
 		  cache: false,
 		  success: function(data) {
-			  console.log(data.response);
 			if (data.response){						
 				var photoUrl = data.response.venue.bestPhoto.prefix + "height150" + data.response.venue.bestPhoto.suffix;
 				marker.content = "<h3>" + marker.title + "</h3><br>" +
 								'<a href="' + data.response.venue.shortUrl + '"target="_blank">' +  
 								"<div style='height:150'><img src=" + '"' +
 								photoUrl + '"></div></a>';								
+			} else {
+				marker.content = "<h3>" + marker.title + "</h3><br>" +
+								 "<p>Could not load data from Foursquare!!</p>";												
 			}
 		  }
 		});			
