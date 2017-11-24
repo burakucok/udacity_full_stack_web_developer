@@ -290,9 +290,6 @@ function initMap() {
     }
 
 	function setMarkerContent(marker){		
-		marker.content = "<h3>" + marker.title + "</h3><br>" +
-				 "<p>Could not load data from Foursquare!!</p>";
-		
 		var clinet_info = "client_id=HSLG1DFKVUHTDBFDW3EWBJ3BPTJC23VDNGNZXQVJW20Z15OK&client_secret=DC43EYNQNYHCLTKF5SVJ0SKFFIBLNZB1EXQQIWCWHJMWOHS2&v=20161016";
 		// AJAX call to Foursquare
 		$.ajax({
@@ -308,7 +305,11 @@ function initMap() {
 								"<div style='height:150'><img src=" + '"' +
 								photoUrl + '"></div></a>';								
 			} 
-		  }
+		  },
+		  error: function(exception) {
+			marker.content = "<h3>" + marker.title + "</h3><br>" +
+					 "<p>Oppss, Could not load data from Foursquare!!</p>";                             
+		  }  	
 		});			
 		
 	}
