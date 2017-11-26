@@ -1,5 +1,6 @@
 # Linux Server Configuration
 This project is linked to the Configuring Linux Web Servers course, which teaches you to secure and set up a Linux server. 
+You can visit http://35.164.53.24/ for the website deployed.
 
 ## How I have completed this project?
 
@@ -113,9 +114,14 @@ sudo apt-get install git
 ```
 sudo mkdir FlaskApp
 git clone https://github.com/burakucok/udacity_full_stack_web_developer.git
-mv /udacity_full_stack_web_developer/Project 4 - Build an Item Catalog Application/vagrant/catalog/ /var/www/FlaskApp
-cd /var/www/FlaskApp/catalog
+mv /udacity_full_stack_web_developer/Project 4 - Build an Item Catalog Application/vagrant/catalog/ /var/www/FlaskApp/FlaskApp
+cd /var/www/FlaskApp/FlaskApp
 sudo apt-get install python-pip
+sudo pip install virtualenv 
+sudo virtualenv venv
+source venv/bin/activate 
+sudo pip install Flask 
+deactivate
 sudo pip install sqlalchemy flask-sqlalchemy psycopg2 bleach requests
 sudo pip install flask packaging oauth2client redis passlib flask-httpauth
 sudo apt-get -qqy install postgresql python-psycopg2
@@ -129,6 +135,7 @@ Create FlaskApp.conf and edit
 ```
 sudo nano /etc/apache2/sites-available/FlaskApp.conf
 ```
+
 ```
 <VirtualHost *:80>
 	WSGIScriptAlias / /var/www/FlaskApp/catalog.wsgi
@@ -146,14 +153,17 @@ sudo nano /etc/apache2/sites-available/FlaskApp.conf
 	CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
 ```
+
 ```
 sudo a2ensite FlaskApp
 sudo a2dissite 000-default
 ```
 
-Add the following lines of code to the flaskapp.wsgi file:
+Add the following code to the flaskapp.wsgi file:
 ```
-sudo nano catalog.wsgi 
+cd /var/www/FlaskApp
+
+sudo nano flaskApp.wsgi 
 ```
 
 ```
@@ -164,5 +174,13 @@ logging.basicConfig(stream=sys.stderr)
 sys.path.insert(0,"/var/www/FlaskApp/")
 
 from FlaskApp import app as application
-application.secret_key = 'super_secret_key'
 ```
+
+restart apache
+```
+sudo service apache2 restart
+```
+### References
+https://classroom.udacity.com/courses/ud299
+https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps
+https://www.digitalocean.com/community/tutorials/how-to-secure-postgresql-on-an-ubuntu-vps
