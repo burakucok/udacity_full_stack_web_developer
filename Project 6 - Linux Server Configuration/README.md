@@ -1,6 +1,6 @@
 # Linux Server Configuration
 This project is linked to the Configuring Linux Web Servers course, which teaches you to secure and set up a Linux server. 
-You can visit http://35.164.53.24/ for the website deployed.
+You can visit http://18.195.138.158/ for the website deployed.
 
 ## How I have completed this project?
 
